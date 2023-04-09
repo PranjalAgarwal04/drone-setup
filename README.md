@@ -68,7 +68,7 @@ sim_vehicle.py -w
 sudo apt-get remove modemmanager -y
 ```
 
-- Install dependencies
+- Install dependencies. [Read Docs](https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html)
 
 ```bash
 sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y
