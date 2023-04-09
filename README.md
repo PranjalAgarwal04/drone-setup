@@ -111,3 +111,9 @@ source ~/.bashrc
 ```bash
 qgc
 ```
+
+- View drone in qgc
+
+```bash
+cd ArduCopter && sim_vehicle.py
+```
