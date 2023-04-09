@@ -1,6 +1,6 @@
 # Setup Documentation
 
-## Setting up Ardupilot
+## Setting up Ardupilot ✈️
 
 - Clone the [ardupilot](https://github.com/ArduPilot/ardupilot) repository. [Read docs](https://ardupilot.org/dev/docs/building-setup-linux.html)
 
@@ -46,7 +46,7 @@ Tools/environment_install/install-prereqs-ubuntu.sh -y
 ./waf copter
 ```
 
-## Running SITL
+## Running SITL 💻️
 
 - Enter the copter directory
 
@@ -60,7 +60,7 @@ cd ArduCopter
 sim_vehicle.py -w
 ```
 
-## Installing GCS
+## Installing GCS 📡️
 
 - Remove a package
 
@@ -112,7 +112,15 @@ source ~/.bashrc
 qgc
 ```
 
-- View drone in qgc
+## Visualize SITL 📺️
+
+- Launch qgc
+
+```bash
+qgc
+```
+
+- Run the simulator
 
 ```bash
 cd ArduCopter && sim_vehicle.py
