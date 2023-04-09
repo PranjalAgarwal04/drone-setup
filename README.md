@@ -148,3 +148,36 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-
 sudo apt-get update
 sudo apt-get install gz-garden
 ```
+
+- Install gazebo11
+
+```bash
+sudo apt-get install gazebo11 libgazebo11-dev
+```
+
+- Install arduino_gazebo [plugin](https://github.com/ArduPilot/ardupilot_gazebo)
+
+```bash
+git clone https://github.com/ArduPilot/ardupilot_gazebo.git
+```
+
+- Install dependencies
+
+```bash
+sudo apt install rapidjson-dev
+```
+
+- Enter the directory
+
+```bash
+cd ardupilot_gazebo
+```
+
+- Install the plugin
+
+```bash
+mkdir build && cd build
+cmake ..
+make -j4
+sudo make preinstall
+```
