@@ -60,6 +60,8 @@ cd ArduCopter
 sim_vehicle.py -w
 ```
 
+![SITL](./assets/sim.png?raw=true "SITL")
+
 ## Installing GCS 📡️
 
 - Remove a package
@@ -125,6 +127,8 @@ qgc
 ```bash
 cd ArduCopter && sim_vehicle.py
 ```
+
+![QGroundControl](./assets/qgc.png?raw=true "QGroundControl")
 
 ## Installing Gazebo 🖥️
 
@@ -206,6 +210,8 @@ gz sim -v4 -r iris_runway.sdf
 ```bash
 sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON --map --console
 ```
+
+![Gazebo](./assets/gzb.png?raw=true "Gazebo")
 
 ## Authors
 
