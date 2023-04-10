@@ -126,7 +126,7 @@ qgc
 cd ArduCopter && sim_vehicle.py
 ```
 
-## Installing Gazebosim 🚀️
+## Installing Gazebo 🖥️
 
 - Install dependencies
 
@@ -206,3 +206,8 @@ gz sim -v4 -r iris_runway.sdf
 ```bash
 sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON --map --console
 ```
+
+## Authors
+
+- [@pranjal](https://github.com/PranjalAgarwal04)
+- [@prajesh](https://github.com/prajeshElEvEn)
