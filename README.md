@@ -128,31 +128,40 @@ cd ArduCopter && sim_vehicle.py
 
 ## Installing Gazebosim 🚀️
 
-- Install dependencies. [Read Docs](https://gazebosim.org/docs/garden/install_ubuntu)
+- Add the repository. [Read Docs](https://classic.gazebosim.org/tutorials?tut=install_ubuntu)
 
 ```bash
-sudo apt update
-sudo apt install lsb-release wget gnupg
+sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
 ```
 
-- Add the repository
+- Setup keys
 
 ```bash
-sudo wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
 ```
 
-- Install the package
+- Update the package list
 
 ```bash
 sudo apt-get update
-sudo apt-get install gz-garden
 ```
 
-- Install gazebo11
+- Install gazebo
 
 ```bash
-sudo apt-get install gazebo11 libgazebo11-dev
+sudo apt-get install gazebo11
+```
+
+- Install gazebo libs
+
+```bash
+sudo apt-get install libgazebo11-dev
+```
+
+- Launch gazebo
+
+```bash
+gazebo
 ```
 
 - Install arduino_gazebo [plugin](https://github.com/ArduPilot/ardupilot_gazebo)
