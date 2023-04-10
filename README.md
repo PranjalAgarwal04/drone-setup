@@ -128,40 +128,30 @@ cd ArduCopter && sim_vehicle.py
 
 ## Installing Gazebosim 🚀️
 
-- Add the repository. [Read Docs](https://classic.gazebosim.org/tutorials?tut=install_ubuntu)
+- Install dependencies
 
 ```bash
-sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+sudo apt update
+sudo apt install lsb-release wget gnupg
 ```
 
-- Setup keys
+- Add the repository. [Read Docs](https://staging.gazebosim.org/docs/garden/install_ubuntu)
 
 ```bash
-wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+sudo wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
 ```
 
 - Update the package list
 
 ```bash
-sudo apt-get update
+sudo apt update
 ```
 
 - Install gazebo
 
 ```bash
-sudo apt-get install gazebo11
-```
-
-- Install gazebo libs
-
-```bash
-sudo apt-get install libgazebo11-dev
-```
-
-- Launch gazebo
-
-```bash
-gazebo
+sudo apt install gz-garden
 ```
 
 - Install arduino_gazebo [plugin](https://github.com/ArduPilot/ardupilot_gazebo)
@@ -173,7 +163,7 @@ git clone https://github.com/ArduPilot/ardupilot_gazebo.git
 - Install dependencies
 
 ```bash
-sudo apt install rapidjson-dev
+sudo apt install libgz-sim7-dev rapidjson-dev
 ```
 
 - Enter the directory
@@ -186,7 +176,33 @@ cd ardupilot_gazebo
 
 ```bash
 mkdir build && cd build
-cmake ..
+cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo
 make -j4
-sudo make preinstall
+```
+
+- Add the plugin to the `~/.bashrc` file
+
+```bash
+echo 'export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/Documents/vs-code/py-python/projects/drone-setup/src/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}' >> ~/.bashrc
+echo 'export GZ_SIM_RESOURCE_PATH=$HOME/Documents/vs-code/py-python/projects/drone-setup/src/ardupilot_gazebo/models:$HOME/Documents/vs-code/py-python/projects/drone-setup/src/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}' >> ~/.bashrc
+```
+
+- Reload the bashrc
+
+```bash
+source ~/.bashrc
+```
+
+## Launching SITL in Gazebo 🚀️
+
+- Run gazebo
+
+```bash
+gz sim -v4 -r iris_runway.sdf
+```
+
+- Run the simulator
+
+```bash
+sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON --map --console
 ```
